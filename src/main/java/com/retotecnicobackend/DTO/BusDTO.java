@@ -10,6 +10,7 @@ public class BusDTO {
     private LocalDateTime fechaCreacion;
     private String caracteristicas;
     private Long marcaId;
+    private String marcaNombre;
     private boolean activo;
 
     // Constructores
@@ -17,13 +18,14 @@ public class BusDTO {
     }
 
     public BusDTO(Long id, String numeroBus, String placa, LocalDateTime fechaCreacion,
-                  String caracteristicas, Long marcaId, boolean activo) {
+                  String caracteristicas, Long marcaId, String marcaNombre, boolean activo) {
         this.id = id;
         this.numeroBus = numeroBus;
         this.placa = placa;
         this.fechaCreacion = fechaCreacion;
         this.caracteristicas = caracteristicas;
         this.marcaId = marcaId;
+        this.marcaNombre = marcaNombre;
         this.activo = activo;
     }
 
@@ -84,7 +86,15 @@ public class BusDTO {
         this.activo = activo;
     }
 
-    // Métodos equals, hashCode y toString
+    public String getMarcaNombre() {
+        return marcaNombre;
+    }
+
+    public void setMarcaNombre(String marcaNombre) {
+        this.marcaNombre = marcaNombre;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,12 +106,14 @@ public class BusDTO {
                 Objects.equals(placa, busDTO.placa) &&
                 Objects.equals(fechaCreacion, busDTO.fechaCreacion) &&
                 Objects.equals(caracteristicas, busDTO.caracteristicas) &&
-                Objects.equals(marcaId, busDTO.marcaId);
+                Objects.equals(marcaId, busDTO.marcaId) &&
+                Objects.equals(marcaNombre, busDTO.marcaNombre); // Añadido
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, numeroBus, placa, fechaCreacion, caracteristicas, marcaId, activo);
+        return Objects.hash(id, numeroBus, placa, fechaCreacion,
+                caracteristicas, marcaId, marcaNombre, activo); // Añadido marcaNombre
     }
 
     @Override
@@ -113,6 +125,7 @@ public class BusDTO {
                 ", fechaCreacion=" + fechaCreacion +
                 ", caracteristicas='" + caracteristicas + '\'' +
                 ", marcaId=" + marcaId +
+                ", marcaNombre='" + marcaNombre + '\'' + // Añadido
                 ", activo=" + activo +
                 '}';
     }

@@ -46,6 +46,7 @@ public class BusService {
         busDTO.setFechaCreacion(bus.getFechaCreacion());
         busDTO.setCaracteristicas(bus.getCaracteristicas());
         busDTO.setMarcaId(bus.getMarca().getId());
+        busDTO.setMarcaNombre(bus.getMarca().getNombre()); // Añade esta línea
         busDTO.setActivo(bus.isActivo());
         return busDTO;
     }
